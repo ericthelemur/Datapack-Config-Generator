@@ -2,7 +2,7 @@
 This python script generates a datapack config menu with options for toggles, adjustable values (integers), folding sections and uninstall section.
 
 ## Example
-<IMG>
+![image](https://user-images.githubusercontent.com/8903016/116833210-d10f4f00-abaf-11eb-8c81-2f7241a65e1e.png)
 
 
 ## Usage
@@ -37,7 +37,7 @@ Config(
 ).create_files()
 ```
 Generates
-<IMG>
+![image](https://user-images.githubusercontent.com/8903016/116833213-d66c9980-abaf-11eb-8a30-8dcc753a1b20.png)
 
-`extra_xxx_comm` are extra commands to run on enable, disable, increase or decrease as required. My ETL Utils Datapack shows this all in use.
+`extra_xxx_comm` are extra commands to run on enable, disable, increase or decrease as required. My [ETL Utils Datapack](https://github.com/ericthelemur/ETL-Utils-Datapack)  ([PM](https://www.planetminecraft.com/data-pack/etl-utils-name-colour-and-coloured-pings/)) shows this all in use.
 Some scoreboard values want both scoreboard and value in one string and some separate. Where possible I have combined them, though some commands make that impossible.
