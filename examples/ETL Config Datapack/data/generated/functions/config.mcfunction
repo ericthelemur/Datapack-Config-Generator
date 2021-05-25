@@ -1,1 +1,0 @@
-function generated:config/config
