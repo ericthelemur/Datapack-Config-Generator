@@ -1,4 +1,3 @@
-from os import name
 from config import namespace, author, datapack_scoreboard, line_colour
 from utils import make_file, make_dir
 
