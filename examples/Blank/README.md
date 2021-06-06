@@ -15,7 +15,7 @@ This only includes the base generator program, with the config appropriately set
 - **Adjustable:** A single value that can be increased and decreased at a set increment. Can optionally give a minimum and maximum value, as well as extra commands to run on in/decreasing.
   - The increment scoreboard can be edited to create varying increments, though it will only update the display when `config` is called.
 - **AdjustToggle:** Combines a toggle and adjustable: an adjustable that is only accessed when the toggle is off. Just like the previous, can have min/max and extra commands on en/disable and in/decrease.
-- **Selection:** Coming soon
+- **Selector (v1.2):** Multiple choice, setting value of scoreboard when selected.
 
 **Text**
 - **Title:** The main heading, has bars above and below.

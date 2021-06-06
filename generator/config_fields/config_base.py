@@ -71,7 +71,7 @@ execute if score %(root)s = zero constants run function generated:config/init_co
 
         print("Finished generating config files.")
         print("\nIf you did not generate the base datapack with this generator, these changes should be made:")
-        print("\tAdded to load: execute if score %s = zero constants run function %s:config/load_config" % (datapack_scoreboard, namespace))
+        print("\tAdded to load: function %s:config/load_config" % namespace)
         print("\tAdded to uninstall: function %s:config/uninstall_config" % namespace)
         print("\tWhen comparing a toggle setting, it is recommended to check it is <= or > 0 instead of = 1 or = 0, to allow for uninitialized values.")
         print("\t\tFor toggles: 0 = uninitialized, -1 = off, 1 = on, including datapack flag.")

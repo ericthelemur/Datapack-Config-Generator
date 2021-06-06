@@ -90,12 +90,24 @@ Initial version, basic support and examples
 Added pages, along with refactoring into multiple folders and adding the `SB` class to represent scoreboards for consistent representation. Settings now changed in `config.py` and still ran with `generator.py`.  
 Also added option to generate basic blank datapack with required advancements and uninstall function based of initial settings in `config.py`.
 
+### V1.2
+Added support for a multiple-choice selector. Example in config:
+```
+Select("Selector", SB("select", "enabled", 1), [
+    Choice("One", "one", 1),
+    Choice("Two", "two", 2),
+    Choice("Three", "three", 3),
+    Choice("Four", "four", 4),
+])
+```
 
 ## Future Plans
 Future
-- [ ] Multiple choice/selector setting
 - [ ] Better support for nested layers of pages
 - [ ] Better interplay when used with existing datapacks (only `config` directory overwritten ever. Template creation does not overwrite.).
+
+**v1.2**
+- [x] Multiple choice/selector setting
 
 **v1.1**
 - [x] Pages

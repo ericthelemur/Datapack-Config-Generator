@@ -44,4 +44,5 @@ def make_func_dirs():
     Path("inc").mkdir(parents=True, exist_ok=True)
     Path("disable").mkdir(parents=True, exist_ok=True)
     Path("enable").mkdir(parents=True, exist_ok=True)
+    Path("sel").mkdir(parents=True, exist_ok=True)
 

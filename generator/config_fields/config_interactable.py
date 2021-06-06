@@ -117,3 +117,45 @@ class AdjustToggle(ConfigField):
             if self.args["dec_commands"]: print(self.args["dec_commands"] % self.args, file=f)
             print("scoreboard players operation %(adjust)s -= %(inc)s\nfunction %(namespace)s:config" % self.args, file=f)
 
+
+
+
+class Choice:
+    def __init__(self, label, func_name, value: int, extra_commands=""):
+        self.args = {"ch_label": label, "ch_func_name": func_name, "ch_value": value, "ch_extra_commands": extra_commands}
+        
+
+class Select(ConfigField):
+    def __init__(self, label, sb: SB, choices: list[Choice], on_change=""):
+        self.args = {"label": label, "sb": sb, "on_change": on_change, "namespace": namespace, "directory": ""}
+        self.choices = choices
+
+    def render(self, indent=0):
+        self.args["indent"] = " " * indent_size * indent
+        for c in self.choices:
+            c.args |= self.args
+
+        commands = """\n# %(label)s""" % self.args
+        
+        # exceptions = ["unless score %(sb)s matches %(value)s " % (self.args | c.args) for c in self.choices]
+        selects = [""", " ", {"text":"[ %(ch_label)s ]","clickEvent":{"action":"run_command","value":"/function %(namespace)s:config/%(directory)ssel/%(ch_func_name)s"},"hoverEvent":{"action":"show_text","contents":["",{"text":"Click to set %(label)s to %(ch_label)s "}]}}""" % c.args for c in self.choices]
+
+
+        for i, choice in enumerate(self.choices):
+            # c_exp = "".join(e for j, e in enumerate(exceptions) if i != j)
+            # %(exp)s ; | {"exp": c_exp}
+            commands += ("""\nexecute if score %(sb)s matches %(ch_value)s run tellraw @s ["%(indent)s", {"text":"☐","color":"gray","bold":true}, "%(label)s" """ +
+                            ("".join(selects[:i])) + 
+                            """, " ", {"text":"[ %(ch_label)s ]","color":"green","clickEvent":{"action":"run_command","value":"/function %(namespace)s:config/%(directory)ssel/%(ch_func_name)s"},"hoverEvent":{"action":"show_text","contents":["",{"text":"Click to set %(label)s to %(ch_label)s "}]}}""" + 
+                            ("".join(selects[(i+1):])) + "]") % choice.args
+            
+        commands += "\n"
+        return commands
+
+    def create_files(self):
+        for choice in self.choices:
+            with open("sel/%(ch_func_name)s.mcfunction" % choice.args, "w", encoding="utf-8") as f:
+                print("# Generated with ericthelemur's Datapack Settings Generator\n", file=f)
+                if self.args["on_change"]: print(self.args["on_change"] % choice.args, file=f)
+                if choice.args["ch_extra_commands"]: print(choice.args["ch_extra_commands"]% choice.args, file=f)
+                print("scoreboard players set %(sb)s %(ch_value)s\nfunction %(namespace)s:config" % choice.args, file=f)

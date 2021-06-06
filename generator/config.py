@@ -45,6 +45,12 @@ config = Config(
         Page("Second page", "2", [
             Text("{\"text\":\"More Text\", \"color\":\"#FF0000\"}"),
             Toggle("Toggle 2", SB("toggle2", "enabled", 1), "toggle2"),
+            Select("Selector", SB("select", "enabled", 1), [
+                Choice("One", "one", 1),
+                Choice("Two", "two", 2),
+                Choice("Three", "three", 3),
+                Choice("Four", "four", 4),
+            ])
         ]),
         Page("Third page", "3", [
             Text("{\"text\":\"Yet More Text\", \"color\":\"#FF0000\"}"),

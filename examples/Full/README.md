@@ -28,7 +28,8 @@ The fully generated and working datapack. This pack has only had the commands `p
 - **AdjustToggle:** 
   - `enable/<toggle>` and `disable/<toggle>` functions for action on switch. 
   - `inc/<toggle>` and `dec/<toggle>` functions for action on change. 
-- **Selection:** Coming soon
+- **Selection: (v1.2)**
+  - `sel/<toggle>` function for switch to the option, see example in main `generator.py`
 
 **Text**
 - **Title:** None
